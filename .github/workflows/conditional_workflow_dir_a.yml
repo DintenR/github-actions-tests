@@ -1,0 +1,17 @@
+### Test workflow for conditional execution based on directory changes
+name: Conditional Workflow for dir_a
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'dir_a/**'  # Trigger only if files in the 'dir_a' directory are changed
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run build script for dir_a
+        run: echo "Building project in dir_a because changes were detected!"
