@@ -36,5 +36,5 @@ jobs:
         with:
           context: ./dir_a
           push: true
-          tags: ${{ env.REGISTRY }}//dintenr/dir_a:latest
+          tags: ${{ env.REGISTRY }}/dintenr/dir_a:latest
           labels: ${{ steps.meta.outputs.labels }}
