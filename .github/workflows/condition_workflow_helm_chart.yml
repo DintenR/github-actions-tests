@@ -32,4 +32,3 @@ jobs:
         run: |
           helm package ./helm-chart/my-chart
           helm push my-chart*.tgz oci://ghcr.io/dintenr
-          helm push my-chart*.tgz oci://ghcr.io/dintenr --version latest
