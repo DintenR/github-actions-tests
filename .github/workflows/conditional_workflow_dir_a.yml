@@ -26,15 +26,20 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Read version
+        id: version
+        run: echo "VERSION=$(cat backend/VERSION)" >> $GITHUB_OUTPUT
+        
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/dintenr/dir_a:latest
+          images: ${{ env.REGISTRY }}/dintenr/dir_a:${{ steps.version.outputs.VERSION }}
+      
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
           context: ./dir_a
           push: true
-          tags: ${{ env.REGISTRY }}/dintenr/dir_a:latest
+          tags: ${{ env.REGISTRY }}/dintenr/dir_a:${{ steps.version.outputs.VERSION }}
           labels: ${{ steps.meta.outputs.labels }}
