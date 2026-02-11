@@ -28,7 +28,7 @@ jobs:
 
       - name: Read version
         id: version
-        run: echo "VERSION=$(cat backend/VERSION)" >> $GITHUB_OUTPUT
+        run: echo "VERSION=$(cat dir_a/VERSION)" >> $GITHUB_OUTPUT
         
       - name: Extract metadata (tags, labels) for Docker
         id: meta
